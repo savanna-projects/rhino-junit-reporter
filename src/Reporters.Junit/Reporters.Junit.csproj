@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<AssemblyVersion>7.0.0.0</AssemblyVersion>
+		<FileVersion>7.0.0.0</FileVersion>
+		<PackageId>Rhino.Reporters.Junit</PackageId>
+		<LangVersion>latest</LangVersion>
+		<Title>Rhino API - JUnit Jupiter Reporter</Title>
+		<Description>Rhino plugin for creating a flat, single file XML report using the JUnit Jupiter standard</Description>
+		<Authors>Rhino API Community</Authors>
+		<PackageTags>automation,crawling,crawl,selenium,appium,automation testing,automation test,qa,gravity,gravity api,scrapping,scrap</PackageTags>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Rhino.Api" Version="2022.12.4.1" />
+	</ItemGroup>
+
+</Project>

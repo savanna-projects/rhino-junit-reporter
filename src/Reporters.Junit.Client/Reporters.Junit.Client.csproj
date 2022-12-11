@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net7.0</TargetFramework>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Rhino.Connectors.Text" Version="2022.12.5.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Reporters.Junit\Reporters.Junit.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="001_google_positive_test.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="002_google_negative_test.txt">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>
