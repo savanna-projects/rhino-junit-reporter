@@ -55,4 +55,4 @@ variables:
   value: true
 
 stages:
-- template: AzurePipeline.yaml
+- template: AzurePipeline.yml
