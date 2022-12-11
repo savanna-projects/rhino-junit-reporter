@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{7529F3E3-E3F7-4702-BDBA-49A747D20B3A}"
 	ProjectSection(SolutionItems) = preProject
 		..\build\AzurePipeline.yml = ..\build\AzurePipeline.yml
+		..\build\AzurePipelineProduction.yml = ..\build\AzurePipelineProduction.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".documents", ".documents", "{B3A088D2-1E04-4BBA-9DED-94AE6CB2A86D}"
@@ -17,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".documents", ".documents", 
 		..\docs\Home.md = ..\docs\Home.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{37B1C512-D284-4296-8159-9BCC45275BE8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".test", ".test", "{37B1C512-D284-4296-8159-9BCC45275BE8}"
 	ProjectSection(SolutionItems) = preProject
-		..\test\MsTest.runsettings = ..\test\MsTest.runsettings
+		..\test\SettingsMsTest.runsettings = ..\test\SettingsMsTest.runsettings
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{FD2D5BE5-3BCA-4AE8-B2B2-663CA2BCAF2F}"
