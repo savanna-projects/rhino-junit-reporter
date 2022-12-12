@@ -5,14 +5,17 @@ stages:
       displayName: 'Build, Pack, Test & Push'
       steps:
       - task: DotNetCoreCLI@2
+        displayName: Restore Dependencies
         inputs:
           command: 'restore'
           projects: '**/*.csproj'
 
       - task: DotNetCoreCLI@2
+        displayName: Build Projects
         inputs:
           command: 'build'
           projects: '**/*.csproj'
+          arguments: '--configuration $(Build.Configuration)'
 
       - task: DotNetCoreCLI@2
         inputs:
