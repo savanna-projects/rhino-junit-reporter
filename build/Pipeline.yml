@@ -15,4 +15,4 @@ jobs:
             inputs:
               command: 'pack'
               packagesToPack: '**/Reporters.Junit.csproj'
-              versioningScheme: 'off'
+              versioningScheme: 'byBuildNumber'
