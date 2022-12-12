@@ -44,6 +44,7 @@ stages:
             #
             # save settings
             $runSettings.Save('$(Test.Settings.FileName.Deploy)')
+
       - task: DotNetCoreCLI@2
         displayName: Unit Tests
         condition: eq(variables.InvokeUnitTests, 'true')
@@ -68,6 +69,7 @@ stages:
           targetType: 'inline'
           script: |
             Remove-Item $(Test.Settings.FileName.Deploy)
+
       - task: DotNetCoreCLI@2
         displayName: Create Package
         condition: eq(variables.CreateAndPushPackages, 'true')
@@ -105,7 +107,7 @@ stages:
           script: |
             # setup
             [regex]$pattern = '(\d+.?)+'
-            $version        = $pattern.Matches('$(Build.BuildNumber)') | foreach-object {$_.Value}      
+            $version        = $pattern.Matches('$(Build.BuildNumber)') | foreach-object {$_.Value}
             # set value
             Write-Host "##vso[task.setvariable variable=buildVersion]$version"
       - task: GitHubRelease@1
