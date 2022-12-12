@@ -25,7 +25,7 @@ stages:
           command: 'pack'
           packagesToPack: '**/Reporters.Junit.csproj'
           versioningScheme: 'byBuildNumber'
-          packDirectory: $(Build.ArtifactStagingDirectory)
+          #packDirectory: $(Build.ArtifactStagingDirectory)
 
       #- task: DotNetCoreCLI@2
       #  displayName: Restore Dependencies
