@@ -5,17 +5,22 @@ stages:
       displayName: 'Build, Pack, Test & Push'
       steps:
       - task: DotNetCoreCLI@2
+        displayName: Restore Dependencies
         inputs:
           command: 'restore'
           projects: '**/*.csproj'
           feedsToUse: 'select'
+          vstsFeed: '6ed1caf9-de4f-48e8-8276-201533d86a19'
 
       - task: DotNetCoreCLI@2
+        displayName: Build Projects
         inputs:
           command: 'build'
           projects: '**/*.csproj'
+          arguments: '--configuration $(Build.Configuration)'
 
       - task: DotNetCoreCLI@2
+        displayName: Create Package
         inputs:
           command: 'pack'
           packagesToPack: '**/Reporters.Junit.csproj'
