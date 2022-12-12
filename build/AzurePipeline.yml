@@ -73,7 +73,7 @@ stages:
         condition: eq(variables.CreateAndPushPackages, 'true')
         inputs:
           command: 'pack'
-          packagesToPack: '**/!(*[Tt]ests)/*.csproj'
+          packagesToPack: '**/Reporters.Junit.csproj'
           versioningScheme: 'byBuildNumber'
           verbosityPack: 'Diagnostic'
           packDirectory: $(Build.ArtifactStagingDirectory)
