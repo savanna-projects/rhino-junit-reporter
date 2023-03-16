@@ -31,15 +31,16 @@ namespace Reporters.Junit
         protected override void OnCreate(RhinoTestRun testRun)
         {
             // setup
-            var outputFolder = string.IsNullOrEmpty(Configuration?.ReportConfiguration?.ReportOut)
+            var reportOut = string.IsNullOrEmpty(Configuration?.ReportConfiguration?.ReportOut)
                 ? Environment.CurrentDirectory
                 : Configuration.ReportConfiguration.ReportOut;
-            var path = Path.Combine(outputFolder, $"{testRun.Key}.xml");
+            reportOut = $"{reportOut}-{testRun.Key}";
+            var xmlPath = Path.Combine(reportOut, "junit.xml");
             var xml = testRun.ConvertToJunitXml();
 
             // create
-            Directory.CreateDirectory(path);
-            File.WriteAllText(path, xml);
+            Directory.CreateDirectory(reportOut);
+            File.WriteAllText(xmlPath, xml);
         }
     }
 }
