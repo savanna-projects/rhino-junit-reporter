@@ -37,7 +37,7 @@ var configuration = new RhinoConfiguration
     },
     EngineConfiguration = new RhinoEngineConfiguration
     {
-        MaxParallel = 5,
+        MaxParallel = 2,
         RetrunExceptions = true,
         ReturnPerformancePoints = true,
         ReturnEnvironment = true

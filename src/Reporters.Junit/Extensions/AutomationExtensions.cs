@@ -20,13 +20,7 @@ namespace Reporters.Junit.Extensions
         public static string ConvertToJunitXml(this RhinoTestRun testRun)
         {
             // collect test cases
-            var testCases = testRun.TestCases.Select(i => new TestCaseModel
-            {
-                ClassName = ConvertForXml(string.Join(".", i.Categories)),
-                Name = ConvertForXml(i.Scenario),
-                SystemOut = ConvertForXml(i.ToString()),
-                Time = i.RunTime.TotalSeconds
-            }).ToArray();
+            var testCases = testRun.TestCases.Select(ConvertForXml).ToArray();
 
             // collect properties
             var models = testRun.TestCases.SelectMany(i => i.ModelEntries).Select(i => new PropertyModel
@@ -41,7 +35,7 @@ namespace Reporters.Junit.Extensions
                 Errors = testRun.TestCases.SelectMany(i => i.Steps).Where(i => i.Exceptions != null).SelectMany(i => i.Exceptions).Count(),
                 Failures = testRun.TotalFail,
                 HostName = ConvertForXml(Environment.MachineName),
-                Name = ConvertForXml($"{testRun.Key}: {testRun.ConfigurationName}"),
+                Name = ConvertForXml($"{testRun.Key}: {(string.IsNullOrEmpty(testRun.ConfigurationName) ? "Manual Run" : testRun.ConfigurationName)}"),
                 NumberOfTests = testRun.TotalTests,
                 Properties = models.ToArray(),
                 Skipped = testRun.TotalInconclusive,
@@ -75,6 +69,44 @@ namespace Reporters.Junit.Extensions
                 .Replace("\"", "&quot;")
                 .Replace("<", "&lt;")
                 .Replace(">", "&gt;");
+        }
+
+        private static TestCaseModel ConvertForXml(RhinoTestCase testCase)
+        {
+            // setup
+            var model = new TestCaseModel
+            {
+                ClassName = ConvertForXml(string.Join(".", testCase.Categories)),
+                Name = ConvertForXml(testCase.Scenario),
+                SystemOut = ConvertForXml(testCase.ToString()),
+                Time = testCase.RunTime.TotalSeconds
+            };
+
+            // exit conditions
+            if (testCase.Actual)
+            {
+                return model;
+            }
+
+            // errors
+            var expetedResults = testCase
+                .Steps
+                .Where(i => !i.Actual)
+                .SelectMany(i => i.ExpectedResults)
+                .Where(i => !i.Actual && !string.IsNullOrEmpty(i.ExpectedResult))
+                .Select(i => i.ExpectedResult);
+
+            var exceptions = testCase
+                .Steps
+                .Where(i => !i.Actual && i.Exceptions?.Any() == true)
+                .SelectMany(i => i?.Exceptions)
+                .Select(i => i.StackTrace);
+
+            model.Failure = string.Join('\n', expetedResults);
+            model.Error = exceptions.Any() ? string.Join("\n", exceptions) : null;
+
+            // get
+            return model;
         }
     }
 }

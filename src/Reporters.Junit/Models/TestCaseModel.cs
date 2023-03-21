@@ -24,6 +24,12 @@ namespace Reporters.Junit.Models
         #region *** Elements   ***
         [XmlElement(elementName: "system-out")]
         public Cdata SystemOut { get; set; }
+
+        [XmlElement(elementName: "failure")]
+        public Cdata Failure { get; set; }
+
+        [XmlElement(elementName: "error")]
+        public Cdata Error { get; set; }
         #endregion
     }
 }
