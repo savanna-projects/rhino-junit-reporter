@@ -6,7 +6,7 @@
 
 		<!-- Settings: Project and Build -->
 		<Parameter name="Build.Number" value="Development" />
-		<Parameter name="Project.Name" value="Rhino Connectors: Text" />
+		<Parameter name="Project.Name" value="Rhino Reporters: Junit" />
 
 		<!-- Settings: Data -->
 		<Parameter name="Data.ConnectionString" value="Data Source=.\\SQLEXPRESS;Initial Catalog=[catalog];Integrated Security=True" />
